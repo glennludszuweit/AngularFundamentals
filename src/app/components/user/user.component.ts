@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-events',
+  selector: 'app-user',
   template: ` <router-outlet></router-outlet> `,
 })
-export class EventsComponent implements OnInit {
+export class UserComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

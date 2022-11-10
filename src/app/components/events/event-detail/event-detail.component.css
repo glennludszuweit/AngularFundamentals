@@ -1,0 +1,8 @@
+.event-image {
+  width: 300px;
+}
+
+.event-container {
+  display: flex;
+  align-items: center;
+}

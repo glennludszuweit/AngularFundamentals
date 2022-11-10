@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from 'src/app/services/event.service';
-import { ToastrService } from 'src/app/services/toastr.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from '../../../shared/toastr.service';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-events-list',
@@ -12,14 +13,18 @@ export class EventsListComponent implements OnInit {
 
   constructor(
     private eventService: EventService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.events = this.eventService.getEvents();
+    // this.eventService.getEvents().subscribe({
+    //   next: (events) => (this.events = events),
+    // });
+    this.events = this.route.snapshot.data['events'];
   }
 
   handleThumbnailClick(name: any) {
-    this.toastrService.success(name);
+    // this.toastrService.success(name);
   }
 }
