@@ -1,0 +1,19 @@
+.well div {
+  color: #bbb;
+}
+
+.thumbnail {
+  min-height: 210px;
+}
+
+.green {
+  color: #81f581 !important;
+}
+
+.white {
+  color: #fff !important;
+}
+
+.blue {
+  color: rgb(164, 202, 255) !important;
+}
