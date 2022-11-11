@@ -2,3 +2,18 @@
   display: flex;
   justify-content: space-between;
 }
+
+em {
+  color: #E05C65;
+  float: right;
+  margin-right: .5em;
+}
+.error input {
+  background-color: #E3C3C5;
+}
+
+.error ::-webkit-input-placeholder{
+  color: #E05C65;
+}
+
+

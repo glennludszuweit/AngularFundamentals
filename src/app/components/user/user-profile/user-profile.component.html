@@ -1,14 +1,55 @@
 <h1>Edit Your Profile</h1>
 <hr />
 <div class="row">
-  <div class="col-md-6">
-    <div class="action-buttons">
-      <button (click)="onCancel()" type="button" class="btn btn-default">
-        Cancel
-      </button>
-      <button (click)="onSave()" type="submit" class="btn btn-primary">
-        Save
-      </button>
-    </div>
+  <div class="col-md-4">
+    <form
+      [formGroup]="profileForm"
+      (ngSubmit)="saveProfile(profileForm.value)"
+      autocomplete="off"
+    >
+      <div class="form-group">
+        <label for="firstName">Username:</label>
+        <input
+          formControlName="userName"
+          class="form-control"
+          type="text"
+          id="userName"
+        />
+      </div>
+      <div
+        class="form-group"
+        [ngClass]="{ error: !fieldErrorCheck('firstName') }"
+      >
+        <label for="firstName">First Name:</label>
+        <em *ngIf="!fieldErrorCheck('firstName')">Required</em>
+        <input
+          formControlName="firstName"
+          class="form-control"
+          type="text"
+          id="firstName"
+          placeholder="First Name"
+        />
+      </div>
+      <div
+        class="form-group"
+        [ngClass]="{ error: !fieldErrorCheck('lastName') }"
+      >
+        <label for="lastName">Last Name:</label>
+        <em *ngIf="!fieldErrorCheck('lastName')">Required</em>
+        <input
+          formControlName="lastName"
+          class="form-control"
+          type="text"
+          id="lastName"
+          placeholder="Last Name"
+        />
+      </div>
+      <div class="action-buttons">
+        <button (click)="onCancel()" type="button" class="btn btn-default">
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
   </div>
 </div>

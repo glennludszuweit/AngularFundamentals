@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserComponent } from './user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -23,6 +23,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [UserComponent, UserProfileComponent, UserLoginComponent],
   providers: [AuthService],
-  imports: [CommonModule, FormsModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes),
+  ],
 })
 export class UserModule {}
