@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  Router,
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
-} from '@angular/router';
-import { map, Observable, of } from 'rxjs';
+import { Resolve } from '@angular/router';
+import { map } from 'rxjs';
 import { EventService } from './event.service';
 
 @Injectable({

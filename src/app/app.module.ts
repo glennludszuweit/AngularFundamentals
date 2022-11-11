@@ -10,6 +10,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/errors/not-found/not-found.component';
 
 import { ToastrService } from './shared/toastr.service';
+import { AuthService } from './components/user/auth.service';
 
 const routes: Routes = [
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
     UserModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [ToastrService],
+  providers: [ToastrService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

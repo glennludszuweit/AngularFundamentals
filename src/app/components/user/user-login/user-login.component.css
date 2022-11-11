@@ -1,0 +1,10 @@
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+em {
+  color: red;
+  float: right;
+  margin-right: .5em;
+}
