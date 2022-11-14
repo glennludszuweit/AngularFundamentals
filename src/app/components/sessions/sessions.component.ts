@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IEvent } from '../events/event.interface';
+import { EventService } from '../events/event.service';
 import { ISession } from './session.interface';
 
 @Component({
@@ -19,15 +21,25 @@ import { ISession } from './session.interface';
   ],
 })
 export class SessionsComponent implements OnInit {
-  @Input() sessions: ISession[] | undefined;
-  @Input() eventId: number | undefined;
+  @Input() event: any;
   addMode: boolean = false;
 
-  constructor() {}
+  constructor(private eventService: EventService) {}
 
   ngOnInit(): void {}
 
-  setAddMode() {
+  toggleAddSession() {
     this.addMode = !this.addMode;
+  }
+
+  saveNewSession(session: ISession) {
+    const nextId = Math.max.apply(
+      null,
+      this.event.sessions?.map((s: IEvent) => s.id)
+    );
+    session.id = nextId + 1;
+    this.event.sessions?.push(session);
+    this.eventService.updateEvent(this.event);
+    this.addMode = false;
   }
 }

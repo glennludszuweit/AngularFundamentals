@@ -344,4 +344,9 @@ export class EventService {
     const event = EVENTS.filter((event) => event.id === id);
     return event[0];
   }
+
+  updateEvent(event: IEvent) {
+    let index = EVENTS.findIndex((e) => (e.id = event.id));
+    EVENTS[index] = event;
+  }
 }

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { ISession } from '../session.interface';
 
 @Component({
@@ -9,6 +8,8 @@ import { ISession } from '../session.interface';
   styleUrls: ['./create-session.component.css'],
 })
 export class CreateSessionComponent implements OnInit {
+  @Output() saveNewSession = new EventEmitter();
+  @Output() cancelAddSession = new EventEmitter();
   newSessionForm!: FormGroup;
   name!: FormControl;
   presenter!: FormControl;
@@ -37,9 +38,9 @@ export class CreateSessionComponent implements OnInit {
     });
   }
 
-  createSession(values: any) {
+  createSession(values: ISession) {
     const session: ISession = {
-      id: 1,
+      id: values.id,
       name: values.name,
       presenter: values.presenter,
       duration: Number(values.duration),
@@ -48,6 +49,10 @@ export class CreateSessionComponent implements OnInit {
       voters: [],
     };
 
-    console.log(session);
+    this.saveNewSession.emit(session);
+  }
+
+  cancel() {
+    this.cancelAddSession.emit();
   }
 }
