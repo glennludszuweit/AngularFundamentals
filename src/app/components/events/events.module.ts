@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { SessionModule } from '../sessions/session.module';
 
 import { EventsComponent } from './events.component';
 import { EventsListComponent } from './events-list/events-list.component';
@@ -15,7 +16,6 @@ import { EventService } from './event.service';
 
 import { ActivatorGuard } from './activator.guard';
 import { DeactivatorGuard } from './deactivator.guard';
-import { CreateEventSessionComponent } from './create-event-session/create-event-session.component';
 
 const routes: Routes = [
   {
@@ -25,10 +25,6 @@ const routes: Routes = [
       events: EventsResolver,
     },
     children: [
-      {
-        path: 'session/create',
-        component: CreateEventSessionComponent,
-      },
       {
         path: 'create',
         component: CreateEventComponent,
@@ -51,13 +47,13 @@ const routes: Routes = [
     EventThumbnailComponent,
     EventDetailComponent,
     CreateEventComponent,
-    CreateEventSessionComponent,
   ],
   providers: [EventService, ActivatorGuard, DeactivatorGuard, EventsResolver],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SessionModule,
     RouterModule.forChild(routes),
   ],
   exports: [EventsComponent],

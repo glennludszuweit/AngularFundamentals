@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="header">
+    <h1>Sessions</h1>
+    <button class="btn btn-primary" (click)="setAddMode()">
+      {{ addMode ? "Close" : "Add session" }}
+    </button>
+  </div>
+  <app-sessions-list *ngIf="!addMode" [sessions]="sessions"></app-sessions-list>
+  <app-create-session *ngIf="addMode"></app-create-session>
+</div>

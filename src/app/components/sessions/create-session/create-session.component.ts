@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ISession } from '../event.interface';
+import { ActivatedRoute } from '@angular/router';
+import { ISession } from '../session.interface';
 
 @Component({
-  selector: 'app-create-event-session',
-  templateUrl: './create-event-session.component.html',
-  styleUrls: ['./create-event-session.component.css'],
+  selector: 'app-create-session',
+  templateUrl: './create-session.component.html',
+  styleUrls: ['./create-session.component.css'],
 })
-export class CreateEventSessionComponent implements OnInit {
+export class CreateSessionComponent implements OnInit {
   newSessionForm!: FormGroup;
   name!: FormControl;
   presenter!: FormControl;

@@ -22,6 +22,5 @@ export class EventDetailComponent implements OnInit {
         this.event = this.eventService.getEvent(Number(id));
       },
     });
-    console.log(this.event);
   }
 }
