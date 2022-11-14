@@ -315,6 +315,22 @@ const EVENTS: IEvent[] = [
 export class EventService {
   constructor() {}
 
+  createEvent(event: any) {
+    const newEvent: IEvent = {
+      id: 1,
+      name: event.name,
+      date: new Date(event.date),
+      time: event.time,
+      price: event.price,
+      location: event.location,
+      onlineUrl: event.onlineUrl,
+      imageUrl: event.imageUrl,
+      sessions: [],
+    };
+
+    EVENTS.push(newEvent);
+  }
+
   getEvents(): Observable<IEvent[]> {
     const subject = new Subject<IEvent[]>();
     setTimeout(() => {

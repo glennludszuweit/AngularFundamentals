@@ -23,5 +23,5 @@ export interface IEvent {
   imageUrl: string;
   location?: ILocation;
   onlineUrl?: string;
-  sessions: ISession[];
+  sessions?: ISession[];
 }

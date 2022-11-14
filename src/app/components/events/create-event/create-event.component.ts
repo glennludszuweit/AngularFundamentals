@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-create-event',
@@ -7,14 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-event.component.css'],
 })
 export class CreateEventComponent implements OnInit {
+  newEvent!: any;
   isDirty: boolean = true;
 
-  constructor(private router: Router) {}
+  constructor(private eventService: EventService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  onSave(): void {
-    // save new event
+  onCreate(values: any): void {
+    this.eventService.createEvent(values);
+    this.isDirty = false;
+    this.router.navigate(['/events']);
   }
 
   onCancel(): void {

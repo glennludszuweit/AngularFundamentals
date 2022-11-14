@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { EventsModule } from './components/events/events.module';
 import { UserModule } from './components/user/user.module';
@@ -32,6 +33,8 @@ const routes: Routes = [
   declarations: [AppComponent, NavComponent, HomeComponent, NotFoundComponent],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     EventsModule,
     UserModule,
     RouterModule.forRoot(routes),
