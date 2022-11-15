@@ -1,8 +1,8 @@
 <div class="well hoverwell thumbnail">
-  <h2>{{ event.name }}</h2>
-  <div>Date: {{ event.date }}</div>
+  <h2>{{ event.name | uppercase }}</h2>
+  <div>Date: {{ event.date | date: "dd.MM.yyy" }}</div>
   <div>Time: {{ event.time }}</div>
-  <div>Price: {{ event.price | currency }}</div>
+  <div>Price: {{ event.price | currency: "EUR" }}</div>
   <div [ngClass]="getStartTimeClass()" [ngSwitch]="event.time">
     Time: {{ event.time }}
     <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
