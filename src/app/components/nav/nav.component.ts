@@ -23,6 +23,10 @@ export class NavComponent implements OnInit {
     });
   }
 
+  clearSearchTerm() {
+    this.searchTerm = '';
+  }
+
   setShowModal() {
     this.showModal = !this.showModal;
   }
