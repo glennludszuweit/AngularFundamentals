@@ -11,6 +11,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/errors/not-found/not-found.component';
 import { SimpleModalComponent } from './components/simple-modal/simple-modal.component';
 
+import { OutsideClickDirective } from './shared/outsideClick.directive';
+
 import { ToastrService } from './shared/toastr.service';
 import { AuthService } from './components/user/auth.service';
 
@@ -37,6 +39,7 @@ const routes: Routes = [
     HomeComponent,
     NotFoundComponent,
     SimpleModalComponent,
+    OutsideClickDirective,
   ],
   imports: [
     BrowserModule,

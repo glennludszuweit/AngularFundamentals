@@ -1,4 +1,8 @@
-<div class="list-group dropdaown-container">
+<div
+  class="list-group dropdaown-container"
+  (outsideClick)="onSessionSelect()"
+  outsideClick
+>
   <a
     *ngFor="let session of sessions"
     [routerLink]="['/events', session.eventId]"
