@@ -8,6 +8,7 @@ import { ISession } from '../session.interface';
 })
 export class SessionsListComponent implements OnInit, OnChanges {
   @Input() filterBy!: string;
+  @Input() sortBy!: string;
   @Input() sessions: ISession[] | undefined;
   visibleSessions: ISession[] | undefined;
 
@@ -19,19 +20,32 @@ export class SessionsListComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.sessions) {
-      this.filterSessions(this.filterBy);
+      this.filterSessionsByLevel(this.filterBy);
+      this.sortSessions(this.sortBy);
     }
-
-    console.log(this.filterBy);
   }
 
-  filterSessions(filter: string) {
+  filterSessionsByLevel(filter: string) {
     if (filter === 'all') {
       return (this.visibleSessions = this.sessions);
     } else {
       return (this.visibleSessions = this.sessions?.filter(
         (session) => session.level.toLowerCase() === filter
       ));
+    }
+  }
+
+  sortSessions(sort: string): any {
+    if (sort === 'name') {
+      return this.visibleSessions?.sort((a, b) =>
+        a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+      );
+    } else if (sort === 'votes') {
+      this.visibleSessions?.sort(
+        (a: any, b: any) => a.voters.length - b?.voters.length
+      );
+    } else {
+      this.visibleSessions;
     }
   }
 }

@@ -32,6 +32,7 @@ export class SessionsComponent implements OnInit {
   @Input() event: any;
   addMode: boolean = false;
   filterBy: string = 'all';
+  sortBy: string = 'name';
 
   constructor(private eventService: EventService) {}
 

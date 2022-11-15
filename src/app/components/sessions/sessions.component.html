@@ -9,6 +9,12 @@
         <option [ngValue]="'intermediate'">Intermediate</option>
         <option [ngValue]="'advanced'">Advanced</option>
       </select>
+
+      <select class="form-control" [(ngModel)]="sortBy">
+        <option disabled [ngValue]="''">Sort Sessions</option>
+        <option [ngValue]="'name'">Name</option>
+        <option [ngValue]="'votes'">Votes</option>
+      </select>
     </div>
     <button class="btn btn-primary" (click)="toggleAddSession()">
       {{ addMode ? "Close" : "Add session" }}
@@ -16,6 +22,7 @@
   </div>
   <app-sessions-list
     [filterBy]="filterBy"
+    [sortBy]="sortBy"
     *ngIf="!addMode"
     [sessions]="event.sessions"
   ></app-sessions-list>
