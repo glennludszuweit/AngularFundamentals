@@ -1,0 +1,10 @@
+<div class="list-group dropdaown-container">
+  <a
+    *ngFor="let session of sessions"
+    [routerLink]="['/events', session.eventId]"
+    class="list-group-item"
+    (click)="onSessionSelect()"
+  >
+    {{ session.name }}
+  </a>
+</div>

@@ -12,20 +12,9 @@ import { IEvent } from '../event.interface';
 export class EventsListComponent implements OnInit {
   events!: IEvent[];
 
-  constructor(
-    private eventService: EventService,
-    private toastrService: ToastrService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // this.eventService.getEvents().subscribe({
-    //   next: (events) => (this.events = events),
-    // });
     this.events = this.route.snapshot.data['events'];
-  }
-
-  handleThumbnailClick(name: any) {
-    // this.toastrService.success(name);
   }
 }

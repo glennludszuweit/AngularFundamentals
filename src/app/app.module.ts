@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/errors/not-found/not-found.component';
+import { SimpleModalComponent } from './components/simple-modal/simple-modal.component';
 
 import { ToastrService } from './shared/toastr.service';
 import { AuthService } from './components/user/auth.service';
@@ -30,7 +31,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    NotFoundComponent,
+    SimpleModalComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,

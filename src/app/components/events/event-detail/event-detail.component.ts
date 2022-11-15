@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from 'src/app/components/events/event.service';
 import { IEvent } from '../event.interface';
@@ -10,6 +10,8 @@ import { IEvent } from '../event.interface';
 })
 export class EventDetailComponent implements OnInit {
   event!: IEvent;
+  addMode!: boolean;
+
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute
@@ -20,7 +22,12 @@ export class EventDetailComponent implements OnInit {
       next: (params) => {
         const id = params['id'];
         this.event = this.eventService.getEvent(Number(id));
+        this.addMode = false;
       },
     });
+  }
+
+  toggleAddMode() {
+    this.addMode = !this.addMode;
   }
 }

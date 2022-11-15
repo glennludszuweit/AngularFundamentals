@@ -27,7 +27,7 @@ export class SessionsListComponent implements OnInit, OnChanges {
 
   filterSessionsByLevel(filter: string) {
     if (filter === 'all') {
-      return (this.visibleSessions = this.sessions);
+      return (this.visibleSessions = this.sessions?.slice(0));
     } else {
       return (this.visibleSessions = this.sessions?.filter(
         (session) => session.level.toLowerCase() === filter
@@ -38,7 +38,7 @@ export class SessionsListComponent implements OnInit, OnChanges {
   sortSessions(sort: string): any {
     if (sort === 'name') {
       return this.visibleSessions?.sort((a, b) =>
-        a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+        a.name > b.name ? 1 : b.name === a.name ? 0 : -1
       );
     } else if (sort === 'votes') {
       this.visibleSessions?.sort(

@@ -20,5 +20,9 @@
     </div>
   </div>
   <hr />
-  <app-sessions [event]="event"></app-sessions>
+  <app-sessions
+    (toggleAddMode)="toggleAddMode()"
+    [addMode]="addMode"
+    [event]="event"
+  ></app-sessions>
 </div>

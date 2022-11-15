@@ -1,0 +1,6 @@
+.dropdaown-container {
+  position: absolute;
+  z-index: 100;
+  border: 1px solid #fff;
+  width: 201px;
+}

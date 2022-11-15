@@ -21,9 +21,9 @@
     </button>
   </div>
   <app-sessions-list
+    *ngIf="!addMode"
     [filterBy]="filterBy"
     [sortBy]="sortBy"
-    *ngIf="!addMode"
     [sessions]="event.sessions"
   ></app-sessions-list>
   <app-create-session
