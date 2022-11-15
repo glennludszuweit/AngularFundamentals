@@ -17,16 +17,27 @@ import { ISession } from './session.interface';
         align-items: center;
         margin-bottom: 1em;
       }
+      .filter-sort {
+        display: flex;
+        width: 30em;
+      }
+
+      .filter-sort select {
+        margin: 0 0.5em;
+      }
     `,
   ],
 })
 export class SessionsComponent implements OnInit {
   @Input() event: any;
   addMode: boolean = false;
+  filterBy: string = 'all';
 
   constructor(private eventService: EventService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.filterBy);
+  }
 
   toggleAddSession() {
     this.addMode = !this.addMode;

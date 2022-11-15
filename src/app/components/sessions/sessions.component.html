@@ -1,11 +1,21 @@
 <div class="container">
   <div class="header">
     <h1>Sessions</h1>
+    <div class="filter-sort">
+      <select class="form-control" [(ngModel)]="filterBy">
+        <option disabled [ngValue]="'all'">Filter by Level</option>
+        <option [ngValue]="'all'">All</option>
+        <option [ngValue]="'beginner'">Beginner</option>
+        <option [ngValue]="'intermediate'">Intermediate</option>
+        <option [ngValue]="'advanced'">Advanced</option>
+      </select>
+    </div>
     <button class="btn btn-primary" (click)="toggleAddSession()">
       {{ addMode ? "Close" : "Add session" }}
     </button>
   </div>
   <app-sessions-list
+    [filterBy]="filterBy"
     *ngIf="!addMode"
     [sessions]="event.sessions"
   ></app-sessions-list>
