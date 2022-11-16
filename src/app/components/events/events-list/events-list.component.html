@@ -2,7 +2,7 @@
   <h1>Upcoming Angular Events</h1>
   <hr />
   <div class="row">
-    <div class="col-md-5" *ngFor="let event of events">
+    <div class="col-md-6" *ngFor="let event of events">
       <app-event-thumbnail
         [routerLink]="['/events', event.id]"
         [event]="event"

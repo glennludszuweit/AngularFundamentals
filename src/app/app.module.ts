@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { EventsModule } from './components/events/events.module';
 import { UserModule } from './components/user/user.module';
 
@@ -12,7 +13,6 @@ import { NotFoundComponent } from './components/errors/not-found/not-found.compo
 import { SimpleModalComponent } from './components/simple-modal/simple-modal.component';
 
 import { OutsideClickDirective } from './shared/outside-click.directive';
-import { ValidateLocationDirective } from './shared/validate-location.directive';
 
 import { ToastrService } from './shared/toastr.service';
 import { AuthService } from './components/user/auth.service';
@@ -46,6 +46,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     EventsModule,
     UserModule,
     RouterModule.forRoot(routes),

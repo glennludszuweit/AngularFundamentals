@@ -18,8 +18,10 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {}
 
   searchSessions(term: string) {
-    this.eventService.searchSessions(term).subscribe((sessions) => {
-      this.foundSessions = sessions;
+    this.eventService.searchSessions(term).subscribe({
+      next: (sessions) => {
+        this.foundSessions = sessions;
+      },
     });
   }
 

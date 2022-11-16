@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'src/app/shared/toastr.service';
 import { AuthService } from '../auth.service';
+import { IUser } from '../user.interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,6 +23,20 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.auth.checkAuthStatus().subscribe({
+      next: (user) => {
+        const thisUser = <IUser>user;
+        this.userName = new FormControl(thisUser.userName);
+        this.firstName = new FormControl(thisUser.firstName);
+        this.lastName = new FormControl(thisUser.lastName);
+        this.profileForm = new FormGroup({
+          userName: this.userName,
+          firstName: this.firstName,
+          lastName: this.lastName,
+        });
+      },
+    });
+
     this.userName = new FormControl({
       value: this.auth.currentUser?.userName,
       disabled: true,
@@ -52,10 +67,19 @@ export class UserProfileComponent implements OnInit {
 
   saveProfile(values: any) {
     if (this.profileForm.valid) {
-      this.auth.updateCurrentUser(values.firstName, values.lastName);
-      this.toastrService.success('Profile updated successfuly.');
-      this.router.navigate(['/events']);
+      this.auth.updateCurrentUser(values.firstName, values.lastName).subscribe({
+        next: (user) => {
+          this.toastrService.success('Profile updated successfuly.');
+          this.router.navigate(['/events']);
+        },
+      });
     }
+  }
+
+  logout() {
+    this.auth.logout().subscribe({
+      next: () => this.router.navigate(['/user/login']),
+    });
   }
 
   onCancel() {

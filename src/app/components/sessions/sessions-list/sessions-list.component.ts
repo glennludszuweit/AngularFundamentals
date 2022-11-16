@@ -11,6 +11,7 @@ import { SessionService } from '../session.service';
 export class SessionsListComponent implements OnInit, OnChanges {
   @Input() filterBy!: string;
   @Input() sortBy!: string;
+  @Input() eventId!: number;
   @Input() sessions: ISession[] | undefined;
   visibleSessions: ISession[] | undefined;
   isAuthenticated: boolean = false;
@@ -59,11 +60,13 @@ export class SessionsListComponent implements OnInit, OnChanges {
   toggleVote(session: ISession) {
     if (this.userHasVoted(session)) {
       this.sessionService.deleteVoter(
+        this.eventId,
         session,
         this.authService.currentUser.userName
       );
     } else {
       this.sessionService.addVoter(
+        this.eventId,
         session,
         this.authService.currentUser.userName
       );

@@ -39,8 +39,7 @@ export class CreateSessionComponent implements OnInit {
   }
 
   createSession(values: ISession) {
-    const session: ISession = {
-      id: values.id,
+    const session = {
       name: values.name,
       presenter: values.presenter,
       duration: Number(values.duration),

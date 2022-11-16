@@ -10,31 +10,22 @@ import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.compo
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 
-import { EventsResolver } from './events.resolver';
+import { ValidateLocationDirective } from '../../shared/validate-location.directive';
 
 import { EventService } from './event.service';
-
-import { ActivatorGuard } from './activator.guard';
-import { DeactivatorGuard } from './deactivator.guard';
-import { ValidateLocationDirective } from '../../shared/validate-location.directive';
 
 const routes: Routes = [
   {
     path: 'events',
     component: EventsComponent,
-    resolve: {
-      events: EventsResolver,
-    },
     children: [
       {
         path: 'create',
         component: CreateEventComponent,
-        canDeactivate: [DeactivatorGuard],
       },
       {
         path: ':id',
         component: EventDetailComponent,
-        canActivate: [ActivatorGuard],
       },
       { path: '', component: EventsListComponent },
     ],
@@ -50,7 +41,7 @@ const routes: Routes = [
     CreateEventComponent,
     ValidateLocationDirective,
   ],
-  providers: [EventService, ActivatorGuard, DeactivatorGuard, EventsResolver],
+  providers: [EventService],
   imports: [
     CommonModule,
     FormsModule,

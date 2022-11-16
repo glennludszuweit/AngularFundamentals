@@ -63,5 +63,9 @@
         </span>
       </div>
     </form>
+    <br />
+    <div *ngIf="invalidLogin" class="alert alert-danger">
+      Invalid login credentials.
+    </div>
   </div>
 </div>
