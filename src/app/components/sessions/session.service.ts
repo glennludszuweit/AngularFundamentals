@@ -16,7 +16,7 @@ export class SessionService {
     };
   }
 
-  addVoter(eventId: number, session: ISession, userName: string) {
+  addVote(eventId: number, session: ISession, userName: string) {
     session.voters?.push(userName);
     const url = `/api/events/${eventId}/sessions/${session.id}/voters/${userName}`;
     return this.httpClient
@@ -25,7 +25,7 @@ export class SessionService {
       .subscribe();
   }
 
-  deleteVoter(eventId: number, session: ISession, userName: string) {
+  deleteVote(eventId: number, session: ISession, userName: string) {
     session.voters = session.voters?.filter((voter) => voter !== userName);
     const url = `/api/events/${eventId}/sessions/${session.id}/voters/${userName}`;
     this.httpClient
