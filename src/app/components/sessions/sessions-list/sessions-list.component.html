@@ -1,5 +1,5 @@
 <div class="row" *ngFor="let session of visibleSessions">
-  <div class="col-md-12">
+  <div class="col-md-12 column">
     <div class="well">
       <h4>{{ session.name }}</h4>
       <h6>{{ session.presenter }}</h6>
@@ -7,6 +7,13 @@
       ><br />
       <span>Level: {{ session.level }}</span>
       <p>{{ session.abstract }}</p>
+    </div>
+    <div *ngIf="isAuthenticated">
+      <app-session-upvote
+        (vote)="toggleVote(session)"
+        [voted]="userHasVoted(session)"
+        [count]="session.voters?.length"
+      ></app-session-upvote>
     </div>
   </div>
 </div>

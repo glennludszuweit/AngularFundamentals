@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { AuthService } from '../../user/auth.service';
 import { ISession } from '../session.interface';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-sessions-list',
@@ -11,12 +13,17 @@ export class SessionsListComponent implements OnInit, OnChanges {
   @Input() sortBy!: string;
   @Input() sessions: ISession[] | undefined;
   visibleSessions: ISession[] | undefined;
+  isAuthenticated: boolean = false;
 
-  constructor() {
+  constructor(
+    private authService: AuthService,
+    private sessionService: SessionService
+  ) {}
+
+  ngOnInit(): void {
     this.visibleSessions = this.sessions;
+    this.isAuthenticated = this.authService.isAuthenticated();
   }
-
-  ngOnInit(): void {}
 
   ngOnChanges(): void {
     if (this.sessions) {
@@ -47,5 +54,30 @@ export class SessionsListComponent implements OnInit, OnChanges {
     } else {
       this.visibleSessions;
     }
+  }
+
+  toggleVote(session: ISession) {
+    if (this.userHasVoted(session)) {
+      this.sessionService.deleteVoter(
+        session,
+        this.authService.currentUser.userName
+      );
+    } else {
+      this.sessionService.addVoter(
+        session,
+        this.authService.currentUser.userName
+      );
+    }
+
+    if (this.sortBy === 'votes') {
+      this.visibleSessions?.sort(this.sortSessions('votes'));
+    }
+  }
+
+  userHasVoted(session: ISession) {
+    return this.sessionService.userHasVoted(
+      session,
+      this.authService.currentUser.userName
+    );
   }
 }

@@ -16,6 +16,7 @@ import { EventService } from './event.service';
 
 import { ActivatorGuard } from './activator.guard';
 import { DeactivatorGuard } from './deactivator.guard';
+import { ValidateLocationDirective } from '../../shared/validate-location.directive';
 
 const routes: Routes = [
   {
@@ -47,6 +48,7 @@ const routes: Routes = [
     EventThumbnailComponent,
     EventDetailComponent,
     CreateEventComponent,
+    ValidateLocationDirective,
   ],
   providers: [EventService, ActivatorGuard, DeactivatorGuard, EventsResolver],
   imports: [

@@ -116,9 +116,15 @@
       />
     </div>
 
-    <div ngModelGroup="location">
-      <div class="form-group">
+    <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
+      <div
+        class="form-group"
+        [ngClass]="{ error: locationGroup?.invalid && locationGroup?.touched }"
+      >
         <label for="address">Event Location:</label>
+        <em *ngIf="locationGroup?.invalid && locationGroup?.touched"
+          >Required: Add location address or online URL.</em
+        >
         <input
           (ngModel)="(newEvent.address)"
           name="address"
@@ -128,7 +134,10 @@
           placeholder="Address of event..."
         />
       </div>
-      <div class="row form-group">
+      <div
+        class="row form-group"
+        [ngClass]="{ error: locationGroup?.invalid && locationGroup?.touched }"
+      >
         <div class="col-md-6">
           <input
             (ngModel)="(newEvent.city)"
@@ -156,6 +165,9 @@
       <label for="onlineUrl">Online Url:</label>
       <input
         (ngModel)="(newEvent.onlineUrl)"
+        (change)="
+          locationGroup.control.controls['address'].updateValueAndValidity()
+        "
         name="onlineUrl"
         id="onlineUrl"
         type="text"

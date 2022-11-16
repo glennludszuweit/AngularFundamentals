@@ -1,0 +1,26 @@
+.votingWidgetContainer {
+  position: absolute;
+  z-index: 5;
+  right: 1em;
+  top: 0;
+}
+
+.votingWidget {
+  display: flex;
+  align-items: center;
+}
+
+.votingButton {
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+.votingButton i {
+  color: #fff;
+}
+
+.badge-inverse {
+  background-color: #fff;
+  color: #4e5d6c;
+  font-weight: bold;
+}

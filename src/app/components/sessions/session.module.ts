@@ -7,6 +7,8 @@ import { CreateSessionComponent } from './create-session/create-session.componen
 import { SessionsComponent } from './sessions.component';
 
 import { DurationPipe } from 'src/app/shared/duration.pipe';
+import { SessionUpvoteComponent } from './session-upvote/session-upvote.component';
+import { SessionService } from './session.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { DurationPipe } from 'src/app/shared/duration.pipe';
     CreateSessionComponent,
     SessionsComponent,
     DurationPipe,
+    SessionUpvoteComponent,
   ],
+  providers: [SessionService],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [SessionsComponent],
 })
