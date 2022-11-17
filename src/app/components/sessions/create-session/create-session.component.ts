@@ -17,8 +17,6 @@ export class CreateSessionComponent implements OnInit {
   level!: FormControl;
   abstract!: FormControl;
 
-  constructor() {}
-
   ngOnInit(): void {
     this.name = new FormControl('', Validators.required);
     this.presenter = new FormControl('', Validators.required);

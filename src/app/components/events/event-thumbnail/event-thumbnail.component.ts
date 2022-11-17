@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IEvent } from '../event.interface';
 
 @Component({
@@ -6,12 +6,8 @@ import { IEvent } from '../event.interface';
   templateUrl: './event-thumbnail.component.html',
   styleUrls: ['./event-thumbnail.component.css'],
 })
-export class EventThumbnailComponent implements OnInit {
+export class EventThumbnailComponent {
   @Input() event!: IEvent;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   getStartTimeClass() {
     return {

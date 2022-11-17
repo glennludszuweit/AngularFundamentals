@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IEvent } from '../event.interface';
 import { EventService } from '../event.service';
 
 @Component({
@@ -9,13 +7,11 @@ import { EventService } from '../event.service';
   templateUrl: './create-event.component.html',
   styleUrls: ['./create-event.component.css'],
 })
-export class CreateEventComponent implements OnInit {
+export class CreateEventComponent {
   newEvent!: any;
-  isDirty: boolean = true;
+  isDirty = true;
 
   constructor(private eventService: EventService, private router: Router) {}
-
-  ngOnInit(): void {}
 
   onCreate(values: any): void {
     this.eventService.createEvent(values).subscribe({

@@ -5,8 +5,6 @@ import * as toastr from 'toastr';
   providedIn: 'root',
 })
 export class ToastrService {
-  constructor() {}
-
   success(message: string, title?: string) {
     toastr.success(message, title);
   }

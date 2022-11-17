@@ -14,7 +14,7 @@ export class SessionsListComponent implements OnInit, OnChanges {
   @Input() eventId!: number;
   @Input() sessions: ISession[] | undefined;
   visibleSessions: ISession[] | undefined;
-  isAuthenticated: boolean = false;
+  isAuthenticated = false;
 
   constructor(
     private authService: AuthService,
@@ -49,11 +49,11 @@ export class SessionsListComponent implements OnInit, OnChanges {
         a.name > b.name ? 1 : b.name === a.name ? 0 : -1
       );
     } else if (sort === 'votes') {
-      this.visibleSessions?.sort(
+      return this.visibleSessions?.sort(
         (a: any, b: any) => a.voters.length - b?.voters.length
       );
     } else {
-      this.visibleSessions;
+      return this.visibleSessions;
     }
   }
 

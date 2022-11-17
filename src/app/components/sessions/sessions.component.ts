@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IEvent } from '../events/event.interface';
 import { EventService } from '../events/event.service';
 import { ISession } from './session.interface';
@@ -28,16 +28,14 @@ import { ISession } from './session.interface';
     `,
   ],
 })
-export class SessionsComponent implements OnInit {
+export class SessionsComponent {
   @Input() event: any;
   @Input() addMode!: boolean;
   @Output() toggleAddMode = new EventEmitter();
-  filterBy: string = 'all';
-  sortBy: string = '';
+  filterBy = 'all';
+  sortBy = '';
 
   constructor(private eventService: EventService) {}
-
-  ngOnInit(): void {}
 
   toggleAddSession() {
     this.toggleAddMode.emit();

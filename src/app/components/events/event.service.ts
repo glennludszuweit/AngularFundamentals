@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { catchError, Observable, of, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { catchError, Observable, of } from 'rxjs';
 import { ISession } from '../sessions/session.interface';
 import { IEvent } from './event.interface';
 
@@ -11,13 +11,13 @@ export class EventService {
   constructor(private httpClient: HttpClient) {}
 
   private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
+    return (error: Error): Observable<T> => {
+      console.error({ operation, error });
       return of(result as T);
     };
   }
 
-  createEvent(event: any) {
+  createEvent(event: IEvent) {
     return this.httpClient
       .post<IEvent>('/api/events', event)
       .pipe(catchError(this.handleError<IEvent>('createEvent')));

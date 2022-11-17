@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { EventsModule } from './components/events/events.module';
 import { UserModule } from './components/user/user.module';
@@ -49,7 +49,7 @@ const routes: Routes = [
     HttpClientModule,
     EventsModule,
     UserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   providers: [ToastrService, AuthService],
   bootstrap: [AppComponent],

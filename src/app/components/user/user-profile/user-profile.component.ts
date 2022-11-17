@@ -65,10 +65,10 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  saveProfile(values: any) {
+  saveProfile(values: IUser) {
     if (this.profileForm.valid) {
       this.auth.updateCurrentUser(values.firstName, values.lastName).subscribe({
-        next: (user) => {
+        next: () => {
           this.toastrService.success('Profile updated successfuly.');
           this.router.navigate(['/events']);
         },

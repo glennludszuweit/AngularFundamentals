@@ -10,8 +10,8 @@ export class SessionService {
   constructor(private httpClient: HttpClient) {}
 
   private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
+    return (error: Error): Observable<T> => {
+      console.error({ operation, error });
       return of(result as T);
     };
   }

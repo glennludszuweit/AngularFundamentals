@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { EventService } from '../events/event.service';
 import { ISession } from '../sessions/session.interface';
 import { AuthService } from '../user/auth.service';
@@ -8,14 +8,12 @@ import { AuthService } from '../user/auth.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
 })
-export class NavComponent implements OnInit {
-  searchTerm: string = '';
-  showModal: boolean = false;
+export class NavComponent {
+  searchTerm = '';
+  showModal = false;
   foundSessions: ISession[] | undefined;
 
   constructor(public auth: AuthService, private eventService: EventService) {}
-
-  ngOnInit(): void {}
 
   searchSessions(term: string) {
     this.eventService.searchSessions(term).subscribe({

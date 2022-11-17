@@ -12,8 +12,6 @@ import { FormGroup, Validator, NG_VALIDATORS } from '@angular/forms';
   ],
 })
 export class ValidateLocationDirective implements Validator {
-  constructor() {}
-
   validate(formGroup: FormGroup): { [key: string]: boolean } | null {
     const address = formGroup.controls['address'];
     const city = formGroup.controls['city'];
